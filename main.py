@@ -54,7 +54,9 @@ def play_selected_song(event):
             mixer.music.pause()
 def check_song_end():
     while True:
-        if not mixer.music.get_busy():
+        if paused:
+            continue
+        elif not mixer.music.get_busy():
             play_next_song()
         time.sleep(1)
 def toggle_play_pause():
